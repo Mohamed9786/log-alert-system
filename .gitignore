@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables and secrets
+.env
+
+# Log files
+*.log
+*.txt
+logs/
+
+# IDE/editor specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Pytest cache
+.pytest_cache/
+
+# Packaging artifacts
+build/
+dist/
+*.egg-info/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Streamlit upload cache
+.streamlit/
+
+# Compiled extensions
+*.so
+
+# Matched logs generated from UI
+matched_logs.txt

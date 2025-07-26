@@ -1,0 +1,10 @@
+log_path: system_errors.log        # Or an absolute path like C:/logs/system_errors.log
+
+error_patterns:
+  - "\\[Error\\]"
+  - "\\[Warning\\]"
+  - "\\[Information\\]"
+
+threshold: 1                       # Number of matches required to trigger alert
+
+email_to: "mohamedvdk97@gmail.com"
