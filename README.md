@@ -94,8 +94,7 @@ log-alert-system/
 │
 ├── logs/
 │   └── app.log
-├── sample_logs/
-│   └── sample.log
+├── sample_logs
 ├── config.yaml
 ├── run.py
 ├── pytest.ini
