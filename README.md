@@ -1,15 +1,15 @@
-# 🔍 Log Analyzer + Auto Alert System
+# Log Analyzer + Auto Alert System
 
 A real-time, regex-based log monitoring and alert system with:
 
-- 📊 Streamlit Dashboard
-- 📧 Auto Email Alerts
-- 🔁 Live Log Monitoring
-- ✅ Pytest Unit Testing
+- Streamlit Dashboard
+- Auto Email Alerts
+- Live Log Monitoring
+- Pytest Unit Testing
 
 ---
 
-## 📦 Features
+## Features
 
 - Filter logs using regex patterns (e.g., CRITICAL, FAILED, etc.)
 - Email alerts triggered when matches exceed threshold
@@ -20,7 +20,7 @@ A real-time, regex-based log monitoring and alert system with:
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 ### 1. Clone and Install
 
@@ -72,7 +72,7 @@ pytest
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 log-alert-system/
@@ -104,7 +104,7 @@ log-alert-system/
 
 ---
 
-## 💡 Future Enhancements
+## Future Enhancements
 
 - Export filtered logs by IP/date/type
 - Real-time socket monitoring
@@ -113,6 +113,6 @@ log-alert-system/
 
 ---
 
-## 🛡️ License
+## 🛡License
 
 This project is licensed under the MIT License.
