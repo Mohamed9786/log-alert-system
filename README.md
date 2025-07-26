@@ -1,57 +1,119 @@
-# 🛡️ Log Analyzer + Auto Alert System
+# 🔍 Log Analyzer + Auto Alert System
 
-## 🎯 Overview
-An industry-ready Python tool to monitor logs (e.g., `/var/log/syslog`) and trigger alerts when error patterns are detected.
+A real-time, regex-based log monitoring and alert system with:
 
-## 🔧 Features
-- 🔍 Regex-based log scanning
-- 📬 Email alerting via Gmail SMTP
-- ⚙️ Configurable via `config.yaml`
-- 🧪 Sample log testing (`sample.log`)
-- 🕰️ Schedule via cron or systemd
-
-## 📁 Project Structure
-log-alert-system/
-├── monitor/
-│   ├── __init__.py
-│   ├── core.py         # Log scanning logic
-│   ├── alert.py        # Email alerting
-│   ├── config.py       # Loads config.yaml + .env
-│   ├── utils.py        # Time filtering, formatting
-│   └── constants.py    # Regex patterns, thresholds
-├── config.yaml
-├── .env
-├── run.py              # CLI entry point
-├── sample.log          # For testing
-├── logs/
-│   └── app.log         # System logs
-├── requirements.txt
-└── README.md
-
-
-## 🚀 Getting Started
-
-1. Clone repo & install dependencies:
-
-2. Configure:
-- `config.yaml` → patterns, threshold, email_to
-- `.env` → your `EMAIL_FROM` and `EMAIL_PASS`
-
-3. Test it:
-python run.py
-
-
-## 🛠️ Scheduling with Cron
-Run every 10 minutes:
-*/10 * * * * /usr/bin/python3 /path/to/run.py
-
-
-## 🐳 Optional: Docker (future)
-Can be containerized to run on EC2, ECS, or Lambda.
+- 📊 Streamlit Dashboard
+- 📧 Auto Email Alerts
+- 🔁 Live Log Monitoring
+- ✅ Pytest Unit Testing
 
 ---
 
-✅ Ready for Interviews:
-- Clean modular design
-- Secure config handling
-- Extendable for SMS, Slack, CloudWatch
+## 📦 Features
+
+- Filter logs using regex patterns (e.g., CRITICAL, FAILED, etc.)
+- Email alerts triggered when matches exceed threshold
+- Web UI to visualize log alerts
+- Download matched logs
+- Upload your own log file for analysis
+- Modular, testable, and extensible
+
+---
+
+## 🚀 How to Run
+
+### 1. Clone and Install
+
+```bash
+git clone https://github.com/yourname/log-alert-system.git
+cd log-alert-system
+python -m venv venv
+venv\Scripts\activate   # On Windows
+pip install -r requirements.txt
+```
+
+### 2. Configure
+
+Set your `.env` file:
+
+```env
+EMAIL_FROM=youremail@gmail.com
+EMAIL_PASS=yourapppassword
+```
+
+Edit `config.yaml`:
+
+```yaml
+log_path: system_errors.log
+error_patterns:
+  - "\\[Error\\]"
+  - "\\[Warning\\]"
+threshold: 1
+email_to: targetemail@example.com
+```
+
+### 3. Run Streamlit UI
+
+```bash
+streamlit run streamlit_app/app.py
+```
+
+### 4. Run CLI Monitor (Optional)
+
+```bash
+python run.py
+```
+
+### 5. Run Tests
+
+```bash
+pytest
+```
+
+---
+
+## 📁 Folder Structure
+
+```
+log-alert-system/
+├── monitor/
+│   ├── alert.py
+│   ├── config.py
+│   ├── constants.py
+│   ├── core.py
+│   ├── email.py
+│   └── utils.py
+│
+├── streamlit_app/
+│   └── app.py
+│
+├── test/
+│   ├── test_config.py
+│   ├── test_core.py
+│   └── test_utils.py
+│
+├── logs/
+│   └── app.log
+├── sample_logs/
+│   └── sample.log
+├── config.yaml
+├── run.py
+├── pytest.ini
+├── .gitignore
+└── README.md
+```
+
+---
+
+## 💡 Future Enhancements
+
+- Export filtered logs by IP/date/type
+- Real-time socket monitoring
+- Integration with Slack or Telegram for alerts
+- Admin panel to adjust thresholds/patterns
+
+---
+
+## 🛡️ License
+
+This project is licensed under the MIT License.
