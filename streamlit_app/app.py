@@ -33,13 +33,13 @@ email_pass = config.email_pass
 # 🎨 UI Setup
 # ------------------------
 st.set_page_config(page_title="Log Analyzer", layout="wide")
-st.title("📊 Log Analyzer Dashboard")
+st.title("Log Analyzer Dashboard")
 st.markdown("Monitor log files and auto-extract alerts using regex patterns.")
 
 # ------------------------
 # 📤 Upload Log File (Optional)
 # ------------------------
-uploaded_file = st.file_uploader("📤 Upload Log File (optional)", type=["log", "txt"])
+uploaded_file = st.file_uploader("Upload Log File (optional)", type=["log", "txt"])
 
 # ------------------------
 # 🔁 Load Log & Match
@@ -51,10 +51,10 @@ if uploaded_file:
         summary = extract_summary(matches)
         summary_text = format_summary(summary)
     except Exception as e:
-        st.error(f"❌ Failed to read uploaded file: {e}")
+        st.error(f"Failed to read uploaded file: {e}")
         log_lines, matches, summary_text = [], [], ""
 else:
-    refresh = st.button("🔄 Manual Refresh Log")
+    refresh = st.button("Manual Refresh Log")
     if refresh or 'log_lines' not in st.session_state:
         try:
             log_lines = load_log_file(default_log_path)
@@ -66,9 +66,9 @@ else:
             st.session_state["matches"] = matches
             st.session_state["summary_text"] = summary_text
 
-            st.success("✅ Log loaded successfully!")
+            st.success("Log loaded successfully!")
         except Exception as e:
-            st.error(f"🚨 Error loading log: {e}")
+            st.error(f"Error loading log: {e}")
             log_lines, matches, summary_text = [], [], ""
     else:
         log_lines = st.session_state.get("log_lines", [])
@@ -82,7 +82,7 @@ else:
         if not st.session_state.get("email_sent", False):
             try:
                 send_email_alert(
-                    subject="🚨 Log Analyzer Alert",
+                    subject="Log Analyzer Alert",
                     summary=summary_text,
                     full_log="\n".join(matches),
                     sender=email_from,
@@ -90,16 +90,16 @@ else:
                     recipient=email_to
                 )
                 st.session_state["email_sent"] = True
-                st.success("📧 Alert email sent!")
+                st.success("Alert email sent!")
             except Exception as e:
-                st.error(f"❌ Failed to send email: {e}")
+                st.error(f"Failed to send email: {e}")
     else:
         st.session_state["email_sent"] = False  # reset flag
 
 # ------------------------
 # 🔍 Filter Log Entries
 # ------------------------
-filter_keyword = st.text_input("🔍 Filter logs by keyword / IP / type")
+filter_keyword = st.text_input("Filter logs by keyword / IP / type")
 
 if filter_keyword:
     matches = [line for line in matches if filter_keyword.lower() in line.lower()]
@@ -107,7 +107,7 @@ if filter_keyword:
 # ------------------------
 # 📝 Summary of Alerts
 # ------------------------
-st.subheader("📝 Summary of Alerts")
+st.subheader("Summary of Alerts")
 if summary_text:
     st.code(summary_text)
 else:
@@ -116,13 +116,13 @@ else:
 # ------------------------
 # 📋 Matched Entries
 # ------------------------
-st.subheader("📋 Matching Log Entries")
+st.subheader("Matching Log Entries")
 if matches:
     for line in matches[-50:]:
         st.text(line)
 
     st.download_button(
-        label="📥 Download Matched Logs",
+        label="Download Matched Logs",
         data="\n".join(matches),
         file_name="matched_logs.txt",
         mime="text/plain"
@@ -133,7 +133,7 @@ else:
 # ------------------------
 # 📂 Full Log Viewer
 # ------------------------
-with st.expander("📂 View Full Log File (Last 50 lines)"):
+with st.expander("View Full Log File (Last 50 lines)"):
     if log_lines:
         for line in log_lines[-50:]:
             st.text(line)
